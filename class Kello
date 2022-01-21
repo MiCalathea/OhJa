@@ -1,0 +1,33 @@
+
+class Kello:
+    def __init__(self, tunnit: int, minuutit: int, sekunnit: int):
+        self.tunnit = tunnit
+        self.sekunnit = sekunnit
+        self.minuutit = minuutit
+        self.alku = 0
+
+    def tick(self):
+        self.sekunnit += 1
+        if self.sekunnit == 60:
+            self.minuutit += 1
+            self.sekunnit = self.alku
+        if self.minuutit == 60:
+            self.tunnit += 1
+            self.minuutit = self.alku
+        if self.tunnit == 24:
+            self.tunnit = self.alku
+    
+    def aseta(self, tunnit, minuutit):
+        self.tunnit = tunnit
+        self.minuutit = minuutit
+        self.sekunnit = self.alku
+            
+    def __str__(self):
+        return f"{self.tunnit:02}:{self.minuutit:02}:{self.sekunnit:02}"
+
+
+
+if __name__ == "__main__":
+    my_kello = Kello(23, 59, 55)
+    print(my_kello)
+    #print('{}'.format(my_kello))
